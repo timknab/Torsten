@@ -7,4 +7,4 @@
 #$ -j y
 #$ -S /bin/bash
 
-mpiexec -l ./ttpn2_group sample num_warmup=500 num_samples=500 random seed=3315137131 data file=ttpn2.data.R init=ttpn2.init.R output file=mpi_sample.64.csv
+mpiexec -l ./ttpn2_group sample num_warmup=500 num_samples=500 random seed=3315137131 data file=ttpn2.data.R init=ttpn2.init.R output file=mpi_sample.1.csv
