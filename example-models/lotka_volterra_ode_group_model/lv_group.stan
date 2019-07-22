@@ -45,13 +45,12 @@ transformed parameters {
 }
 model {
   for (isub in 1:N_subj) {
-    theta[isub, {1, 3}] ~ normal(1, 0.5);
-    theta[isub, {2, 4}] ~ normal(0.05, 0.05);
+    theta[isub, ] ~ normal(1, 0.5);
     sigma[isub] ~ lognormal(-1, 1);
     z_init[isub] ~ lognormal(log(10), 1);
     for (k in 1:2) {
       y0[isub, k] ~ lognormal(log(z_init[isub, k]), sigma[isub, k]);
-      y[isub, , k] ~ lognormal(log(z[k, ((k-1)*N + 1):(k*N)]), sigma[isub, k]);
+      y[isub, , k] ~ lognormal(log(z[k, ((isub-1)*N + 1):(isub*N)]), sigma[isub, k]);
     }
   }
 }
